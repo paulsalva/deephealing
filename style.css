@@ -356,6 +356,7 @@ footer {
   nav { padding: 18px 24px; justify-content: flex-end; }
   .nav-links { display: none; }
   .hamburger { display: flex; }
+  .close-btn { display: none; } /* mobile uses browser back + hamburger */
   .container { padding: 0 24px; }
   .page-header { padding: 0 24px 56px; }
   .footer-grid { grid-template-columns: 1fr; gap: 36px; }
