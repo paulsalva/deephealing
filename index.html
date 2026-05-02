@@ -18,14 +18,19 @@
       background-position: center top;
       position: relative;
     }
+    @media (max-width: 800px) {
+      #hero { background-image: url('images/deep-healing-bg-mobile.webp'); }
+    }
     #hero::after {
       content: ''; position: absolute; inset: 0;
       background: radial-gradient(ellipse at center, transparent 50%, rgba(4,10,6,0.35) 100%);
       pointer-events: none;
     }
 
+    /* STICKER — desktop */
     .sticker {
-      position: absolute; top: 18%; left: 8%;
+      position: absolute;
+      top: 18%; left: 8%;
       width: 300px; height: 300px;
       transform: rotate(-8deg) scale(0);
       cursor: pointer; text-decoration: none;
@@ -38,7 +43,6 @@
       animation: ring-spin 22s linear infinite;
     }
     @keyframes ring-spin { to { transform: rotate(360deg); } }
-
     .sticker-inner {
       width: 100%; height: 100%; border-radius: 50%;
       background: conic-gradient(from 0deg, #b07008, #f5d98a, #e8b84b, #c8860a, #7a4e04, #c8860a, #f0cc70, #b07008);
@@ -55,33 +59,70 @@
       0%,100% { box-shadow: 0 12px 48px rgba(0,0,0,0.7), 0 3px 12px rgba(200,134,10,0.4); transform: scale(1); }
       50%      { box-shadow: 0 16px 56px rgba(0,0,0,0.6), 0 6px 24px rgba(200,134,10,0.6); transform: scale(1.04); }
     }
-
     .sticker-text { display: flex; flex-direction: column; align-items: center; gap: 6px; z-index: 1; }
     .sticker-top  { font-family: 'Crimson Pro', serif; font-size: 13px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: #251000; opacity: 0.78; }
     .sticker-main { font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 600; color: #180e00; text-align: center; line-height: 1.0; }
     .sticker-sub  { font-family: 'Crimson Pro', serif; font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: #251000; opacity: 0.6; }
 
-    .scroll-hint {
-      position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
-      display: flex; flex-direction: column; align-items: center; gap: 10px;
-      opacity: 0; pointer-events: none;
+    /* ROTATING QUOTES */
+    .quote-rotator {
+      position: absolute;
+      bottom: 52px; left: 52px;
+      max-width: 520px;
+      opacity: 0; z-index: 10;
     }
-    .scroll-hint span { font-size: 9px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--cream); opacity: 0.45; text-shadow: 0 1px 6px rgba(0,0,0,0.5); }
-    .scroll-line { width: 1px; height: 44px; background: linear-gradient(to bottom, var(--gold-light), transparent); animation: line-drop 2.4s ease-in-out infinite; }
-    @keyframes line-drop {
-      0%   { transform: scaleY(0); transform-origin: top;    opacity: 1; }
-      50%  { transform: scaleY(1); transform-origin: top;    opacity: 1; }
-      51%  { transform-origin: bottom; }
-      100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+    .quote-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(17px, 2vw, 24px);
+      font-weight: 300; font-style: italic;
+      line-height: 1.45; color: var(--cream);
+      text-shadow: 0 2px 12px rgba(0,0,0,0.8);
+    }
+    .quote-text::before { content: '\201C'; color: var(--gold); }
+    .quote-text::after  { content: '\201D'; color: var(--gold); }
+    .quote-attr {
+      margin-top: 10px; font-size: 10px;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gold); opacity: 0.7;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.7);
     }
 
+    /* MOBILE overrides */
     @media (max-width: 800px) {
-      .sticker { width: 180px; height: 180px; left: 5%; top: 16%; }
-      .sticker-main { font-size: 28px; }
+      /* Sticker: smaller, bottom-right */
+      .sticker {
+        top: auto; left: auto;
+        bottom: 5%; right: 5%;
+        width: 130px; height: 130px;
+      }
+      .sticker-ring { inset: -8px; }
+      .sticker-text { gap: 3px; }
+      .sticker-top  { font-size: 7px; }
+      .sticker-main { font-size: 20px; line-height: 1.05; }
+      .sticker-sub  { font-size: 6px; }
+      /* Quotes: keep left, avoid sticker */
+      .quote-rotator { bottom: 28px; left: 20px; right: 165px; }
+      .quote-text { font-size: 14px; }
     }
   </style>
 </head>
 <body>
+
+  <!-- MOBILE NAV OVERLAY -->
+  <div class="mobile-nav" id="mobile-nav">
+    <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+    <ul class="mobile-nav-links">
+      <li><a href="book.html">The Book</a></li>
+      <li><a href="podcast.html">Podcast</a></li>
+      <li><a href="events.html">Live Events</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="https://YOUR-SHOPIFY-URL.myshopify.com" target="_blank">Shop</a></li>
+    </ul>
+  </div>
 
   <nav id="main-nav">
     <ul class="nav-links">
@@ -90,14 +131,10 @@
       <li><a href="events.html">Live Events</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="https://YOUR-SHOPIFY-URL.myshopify.com" target="_blank">Shop</a></li>
-      <li>
-        <button class="nav-search" aria-label="Search">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-          </svg>
-        </button>
-      </li>
     </ul>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
   <section id="hero">
@@ -112,12 +149,58 @@
       </div>
     </a>
 
-
+    <div class="quote-rotator" id="quote-rotator">
+      <p class="quote-text" id="q-text">All words are magik words. Isn't that terrifying?</p>
+      <p class="quote-attr" id="q-attr">— Deep Healing</p>
+    </div>
   </section>
 
   <script>
-    gsap.to('#main-nav',    { opacity: 1, duration: 1.4, delay: 0.3, ease: 'power2.out' });
-    gsap.to('#sticker',     { scale: 1,   duration: 1.1, delay: 1.1, ease: 'elastic.out(1, 0.45)' });
+    gsap.to('#main-nav', { opacity: 1, duration: 1.4, delay: 0.3, ease: 'power2.out' });
+    gsap.to('#sticker',  { scale: 1,   duration: 1.1, delay: 1.1, ease: 'elastic.out(1, 0.45)' });
+
+    // Hamburger
+    const hamburger   = document.getElementById('hamburger');
+    const mobileNav   = document.getElementById('mobile-nav');
+    const mobileClose = document.getElementById('mobile-nav-close');
+    hamburger.addEventListener('click', () => mobileNav.classList.add('open'));
+    mobileClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+    mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileNav.classList.remove('open')));
+
+    // Rotating quotes
+    const quotes = [
+      "All words are magik words. Isn't that terrifying?",
+      "Reality is a state of brokenness. That's just how it works.",
+      "You ARE the apocalypse.",
+      "This will end, and you're not gonna die.",
+      "You are so very important. Without you there is no we.",
+      "Squeeze. That. Burrito.",
+      "You are not your dead phone. You are not your mother's Netflix password.",
+      "What you are doing is right. What you are doing is interesting.",
+    ];
+
+    const qText    = document.getElementById('q-text');
+    const qAttr    = document.getElementById('q-attr');
+    const rotator  = document.getElementById('quote-rotator');
+    let qIndex = 0;
+
+    gsap.to(rotator, { opacity: 1, duration: 1.2, delay: 2.8, ease: 'power2.out' });
+
+    function nextQuote() {
+      gsap.to([qText, qAttr], {
+        opacity: 0, y: -6, duration: 0.45, ease: 'power2.in',
+        onComplete: () => {
+          qIndex = (qIndex + 1) % quotes.length;
+          qText.textContent = quotes[qIndex];
+          gsap.fromTo([qText, qAttr],
+            { opacity: 0, y: 10 },
+            { opacity: 1, y: 0, duration: 0.65, ease: 'power2.out', stagger: 0.12 }
+          );
+        }
+      });
+    }
+
+    setInterval(nextQuote, 5000);
   </script>
 </body>
 </html>

@@ -75,10 +75,45 @@
       color: var(--gold); opacity: 0.6;
     }
 
+    .toc-section {
+      padding: 88px 0 100px;
+      background: var(--forest-deep);
+      border-top: 1px solid rgba(200,134,10,0.1);
+    }
+    .toc-grid {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .toc-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      gap: 16px;
+    }
+    .toc-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--cream);
+    }
+    .toc-page {
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      opacity: 0.6;
+      white-space: nowrap;
+    }
+
     @media (max-width: 800px) {
       .book-layout { grid-template-columns: 1fr; gap: 40px; }
       .book-cover { position: static; }
       .quotes-grid { grid-template-columns: 1fr; }
+      .toc-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -89,6 +124,22 @@
       <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
     </svg>
   </a>
+
+  <!-- MOBILE NAV OVERLAY -->
+  <div class="mobile-nav" id="mobile-nav">
+    <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+    <ul class="mobile-nav-links">
+      <li><a href="book.html" class="active">The Book</a></li>
+      <li><a href="podcast.html">Podcast</a></li>
+      <li><a href="events.html">Live Events</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="https://YOUR-SHOPIFY-URL.myshopify.com" target="_blank">Shop</a></li>
+    </ul>
+  </div>
 
   <nav id="main-nav" class="interior">
     <ul class="nav-links">
@@ -105,6 +156,9 @@
         </button>
       </li>
     </ul>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
   <div class="page-header">
@@ -120,7 +174,10 @@
       <div class="book-info">
         <div class="divider will-animate"></div>
         <p class="section-body will-animate">
-          [Book description — replace with real copy. A transformative exploration of healing, consciousness, and what it truly means to restore the self from the inside out.]
+          A surreal self-help book disguised as a comedy — or maybe the other way around. Through magik affirmations, laugh meditations, and breathing exercises, <em>Deep Healing</em> is a book of poetic instructions for life that invites the reader to a remembering of their truest, wisest self… and how that self is wrong.
+        </p>
+        <p class="section-body will-animate" style="margin-top:20px">
+          This is healing that doesn't take itself too seriously — because healing is serious business, and nobody likes that. Perfect for burned-out creatives, recovering perfectionists, soft witches and blood wizards — everyone allergic to traditional self-help.
         </p>
         <a href="#" class="btn-outline will-animate" style="margin-top:36px">Buy Now</a>
         <div class="where-to-buy will-animate">
@@ -136,26 +193,67 @@
     </div>
   </div>
 
+  <!-- BLURBS -->
   <div class="quotes-section">
     <div class="container">
       <span class="section-label will-animate">What People Are Saying</span>
       <div class="quotes-grid">
         <div class="will-animate">
-          <p class="quote-text">This book changed the way I understand healing at its deepest level.</p>
-          <p class="quote-attr">— Placeholder Name, Title</p>
+          <p class="quote-text">Deep Healing is my Bible.</p>
+          <p class="quote-attr">— Tig Notaro</p>
         </div>
         <div class="will-animate">
-          <p class="quote-text">Greg Barris has written something rare — a book that heals as you read it.</p>
-          <p class="quote-attr">— Placeholder Name, Title</p>
+          <p class="quote-text">I'm convinced this book could heal me.</p>
+          <p class="quote-attr">— Kate Berlant</p>
         </div>
         <div class="will-animate">
-          <p class="quote-text">Essential reading for anyone on a journey toward wholeness.</p>
-          <p class="quote-attr">— Placeholder Name, Title</p>
+          <p class="quote-text">This book is comedic meditation in written form. I needed these new perspectives to just think and feel and breathe something different. I will read this multiple times, every year.</p>
+          <p class="quote-attr">— Rory Scovel</p>
         </div>
         <div class="will-animate">
-          <p class="quote-text">A profound, generous, and deeply human exploration of what healing really means.</p>
-          <p class="quote-attr">— Placeholder Name, Title</p>
+          <p class="quote-text">Anomalous Learning. Love Existential Greg. Rolls Along. It's my new favorite beach read.</p>
+          <p class="quote-attr">— Jared Harris</p>
         </div>
+        <div class="will-animate" style="grid-column: 1 / -1">
+          <p class="quote-text">In a world where even the human soul can be commoditized, Deep Healing commits a welcome act of spiritual piracy. It's a self-help book disguised as a joke — or maybe a joke disguised as dharma. The 1960s had Abbie Hoffman, Paul Krassner, and Alan Watts. Today, we have Greg Barris.</p>
+          <p class="quote-attr">— Doug Rushkoff</p>
+        </div>
+        <div class="will-animate" style="grid-column: 1 / -1">
+          <p class="quote-text">His powers are out in the wide open now. Deep Healing is a portal, and he's inviting us to fly through it.</p>
+          <p class="quote-attr">— Adrian LeBlanc, Journalist and author of <em>Random Family</em></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TABLE OF CONTENTS -->
+  <div class="toc-section">
+    <div class="container">
+      <span class="section-label will-animate">Inside the Book</span>
+      <div class="toc-grid">
+        <div class="toc-item will-animate"><span class="toc-title">The Apocalypse</span><span class="toc-page">11</span></div>
+        <div class="toc-item will-animate"><span class="toc-title">Bee</span><span class="toc-page">18</span></div>
+        <div class="toc-item will-animate"><span class="toc-title">Money</span><span class="toc-page">27</span></div>
+        <div class="toc-item will-animate"><span class="toc-title">An Ode To My Favorite Color</span><span class="toc-page">31</span></div>
+        <div class="toc-item will-animate"><span class="toc-title">Mushrooms</span><span class="toc-page">41</span></div>
+        <div class="toc-item will-animate"><span class="toc-title">Hygiene</span><span class="toc-page">46</span></div>
+        <div class="toc-item will-animate"><span class="toc-title">Soul Detective</span><span class="toc-page">51</span></div>
+        <div class="toc-item will-animate"><span class="toc-title">Magik For Kids</span><span class="toc-page">64</span></div>
+        <div class="toc-item will-animate"><span class="toc-title">Time</span><span class="toc-page">72</span></div>
+        <div class="toc-item will-animate"><span class="toc-title">You Are A Beautiful Breeze of Wind</span><span class="toc-page">78</span></div>
+        <div class="toc-item will-animate"><span class="toc-title">Magik</span><span class="toc-page">83</span></div>
+        <div class="toc-item will-animate"><span class="toc-title">Sigil</span><span class="toc-page">90</span></div>
+        <div class="toc-item will-animate"><span class="toc-title">Orange Grove</span><span class="toc-page">98</span></div>
+        <div class="toc-item will-animate"><span class="toc-title">Tunnel</span><span class="toc-page">102</span></div>
+        <div class="toc-item will-animate"><span class="toc-title">Burrito Magik</span><span class="toc-page">106</span></div>
+        <div class="toc-item will-animate"><span class="toc-title">Voicemail</span><span class="toc-page">112</span></div>
+        <div class="toc-item will-animate"><span class="toc-title">Synchronicity</span><span class="toc-page">116</span></div>
+        <div class="toc-item will-animate"><span class="toc-title">Dreams</span><span class="toc-page">127</span></div>
+        <div class="toc-item will-animate"><span class="toc-title">A Healing Wind Approaches</span><span class="toc-page">151</span></div>
+        <div class="toc-item will-animate"><span class="toc-title">Remote Viewing For Beginners</span><span class="toc-page">153</span></div>
+        <div class="toc-item will-animate"><span class="toc-title">Laugh Meditation</span><span class="toc-page">164</span></div>
+        <div class="toc-item will-animate"><span class="toc-title">Hexercise!</span><span class="toc-page">170</span></div>
+        <div class="toc-item will-animate"><span class="toc-title">Ending</span><span class="toc-page">182</span></div>
       </div>
     </div>
   </div>
@@ -195,6 +293,12 @@
     gsap.registerPlugin(ScrollTrigger);
     gsap.to('#main-nav', { opacity: 1, duration: 1.2, delay: 0.2, ease: 'power2.out' });
     gsap.to('#close-btn', { opacity: 0.6, duration: 1.0, delay: 0.6, ease: 'power2.out' });
+    const hamburger   = document.getElementById('hamburger');
+    const mobileNav   = document.getElementById('mobile-nav');
+    const mobileClose = document.getElementById('mobile-nav-close');
+    hamburger.addEventListener('click', () => mobileNav.classList.add('open'));
+    mobileClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+    mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileNav.classList.remove('open')));
     gsap.to('#plabel',   { opacity: 1, y: 0, duration: 0.8, delay: 0.5, ease: 'power3.out' });
     gsap.to('#ptitle',   { opacity: 1, y: 0, duration: 1.0, delay: 0.7, ease: 'power3.out' });
     gsap.set(['#plabel','#ptitle'], { y: 20 });

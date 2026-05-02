@@ -65,6 +65,22 @@
     </svg>
   </a>
 
+  <!-- MOBILE NAV OVERLAY -->
+  <div class="mobile-nav" id="mobile-nav">
+    <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+    <ul class="mobile-nav-links">
+      <li><a href="book.html">The Book</a></li>
+      <li><a href="podcast.html">Podcast</a></li>
+      <li><a href="events.html">Live Events</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="https://YOUR-SHOPIFY-URL.myshopify.com" target="_blank">Shop</a></li>
+    </ul>
+  </div>
+
   <nav id="main-nav" class="interior">
     <ul class="nav-links">
       <li><a href="book.html">The Book</a></li>
@@ -80,6 +96,9 @@
         </button>
       </li>
     </ul>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
   <div class="page-header">
@@ -98,17 +117,17 @@
           <span class="bio-role">Author &amp; Host</span>
           <h2 class="bio-name">Greg Barris</h2>
           <div class="divider"></div>
-          <p class="bio-text">[Greg's bio — replace with real copy. Comedian, healer, author, and the host of Deep Healing. A voice that bridges humor and transformation.]</p>
+          <p class="bio-text">Greg Barris is a comedian, writer, and musician known for his sharp wit and transformative creativity. He's the creator of one of the longest-running celebrated cult comedy shows in New York and Los Angeles and the host of the podcast Deep Healing. He has appeared on The Late Late Show and been profiled in The New Yorker and Rolling Stone. Barris lives in Los Angeles where he continues to mix humor, music, pizza, and the metaphysical in unexpected ways. He is interested in exploring experiences that are relational and not purely transactional.</p>
         </div>
       </div>
 
       <div class="bio">
         <div class="bio-photo will-animate">Photo Placeholder</div>
         <div class="bio-info will-animate">
-          <span class="bio-role">Co-Host</span>
-          <h2 class="bio-name">Michelle<br>[Last Name]</h2>
+          <span class="bio-role">Co-Creator &amp; Publisher</span>
+          <h2 class="bio-name">Michelle Newman</h2>
           <div class="divider"></div>
-          <p class="bio-text">[Michelle's bio — replace with real copy.]</p>
+          <p class="bio-text">Michelle Newman is an award-winning writer, host, and podcast producer. She founded Newman Media, a creative studio dedicated to producing original, genre-blending audio content and print media. Based in Los Angeles, she is also the creator of Tell Me a Ghost Story, an award-winning podcast that merges real supernatural encounters with humor and heart. Her work draws from a deep love of the unexplained and years of experience crafting projects that stick with you long after they end. She has a passion for transforming narratives to reach their full potential.</p>
         </div>
       </div>
 
@@ -150,6 +169,12 @@
     gsap.registerPlugin(ScrollTrigger);
     gsap.to('#main-nav', { opacity: 1, duration: 1.2, delay: 0.2, ease: 'power2.out' });
     gsap.to('#close-btn', { opacity: 0.6, duration: 1.0, delay: 0.6, ease: 'power2.out' });
+    const hamburger   = document.getElementById('hamburger');
+    const mobileNav   = document.getElementById('mobile-nav');
+    const mobileClose = document.getElementById('mobile-nav-close');
+    hamburger.addEventListener('click', () => mobileNav.classList.add('open'));
+    mobileClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+    mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileNav.classList.remove('open')));
     gsap.set(['#plabel','#ptitle'], { y: 20 });
     gsap.to('#plabel', { opacity: 1, y: 0, duration: 0.8, delay: 0.5, ease: 'power3.out' });
     gsap.to('#ptitle', { opacity: 1, y: 0, duration: 1.0, delay: 0.7, ease: 'power3.out' });
