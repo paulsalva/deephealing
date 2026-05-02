@@ -25,13 +25,17 @@
     }
     .events-hero::after {
       content: ''; position: absolute; inset: 0;
-      background: rgba(6, 14, 8, 0.62);
+      background: rgba(4, 8, 5, 0.78);
     }
 
     .events-content {
       position: relative; z-index: 1;
       display: flex; flex-direction: column;
-      align-items: center;
+      align-items: flex-start;
+      padding-left: 54%;
+      padding-right: 5%;
+      width: 100%;
+      text-align: left;
     }
 
     .events-label {
@@ -41,19 +45,19 @@
     }
     .events-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(64px, 10vw, 130px);
+      font-size: clamp(48px, 6vw, 96px);
       font-weight: 300; font-style: italic;
       line-height: 0.92; color: var(--cream);
       opacity: 0; margin-bottom: 36px;
     }
     .events-divider {
       width: 56px; height: 1px;
-      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      background: linear-gradient(to right, var(--gold), transparent);
       margin-bottom: 28px; opacity: 0;
     }
     .events-body {
-      font-size: 18px; font-weight: 300; line-height: 1.7;
-      color: var(--cream-dim); max-width: 460px;
+      font-size: 17px; font-weight: 300; line-height: 1.7;
+      color: var(--cream-dim); max-width: 360px;
       opacity: 0; margin-bottom: 32px;
     }
     .coming-soon-badge {
