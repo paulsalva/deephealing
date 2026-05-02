@@ -8,14 +8,14 @@
 html { scroll-behavior: smooth; }
 
 :root {
-  --forest-deep:  #0a1a10;
-  --forest-mid:   #1b3a2a;
+  --forest-deep:  #0a0a0a;
+  --forest-mid:   #1a1a1a;
   --gold:         #c8860a;
   --gold-light:   #e8b84b;
   --gold-pale:    #f5d98a;
   --cream:        #f0e8d8;
   --cream-dim:    #b8b0a0;
-  --section-bg:   #0d1f15;
+  --section-bg:   #111111;
 }
 
 body {
@@ -41,7 +41,7 @@ nav {
 
 /* Interior pages add this class for a readable gradient */
 nav.interior {
-  background: linear-gradient(to bottom, rgba(6,14,8,0.88) 0%, transparent 100%);
+  background: linear-gradient(to bottom, rgba(5,5,5,0.92) 0%, transparent 100%);
 }
 
 .nav-links {
@@ -95,7 +95,7 @@ nav.interior {
 .page-header::after {
   content: '';
   position: absolute; inset: 0;
-  background: linear-gradient(to bottom, rgba(6,14,8,0.3) 0%, var(--forest-deep) 100%);
+  background: linear-gradient(to bottom, rgba(5,5,5,0.3) 0%, var(--forest-deep) 100%);
 }
 
 .page-header-text { position: relative; z-index: 1; }
@@ -156,6 +156,25 @@ nav.interior {
   max-width: 640px;
 }
 
+/* ── CLOSE BUTTON (interior pages → back to home) ──── */
+.close-btn {
+  position: fixed;
+  top: 24px;
+  right: 28px;
+  z-index: 200;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cream);
+  opacity: 0;
+  text-decoration: none;
+  transition: opacity 0.3s, color 0.3s;
+}
+.close-btn:hover { color: var(--gold-light); opacity: 1 !important; }
+.close-btn svg { filter: drop-shadow(0 1px 6px rgba(0,0,0,0.7)); }
+
 /* ── BUTTONS ───────────────────────────────────────── */
 .btn-outline {
   display: inline-block;
@@ -175,7 +194,7 @@ nav.interior {
 
 /* ── FOOTER ────────────────────────────────────────── */
 footer {
-  background: #050d07;
+  background: #050505;
   padding: 64px 0 36px;
   border-top: 1px solid rgba(200,134,10,0.08);
 }

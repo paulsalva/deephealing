@@ -25,15 +25,15 @@
     }
 
     .sticker {
-      position: absolute; bottom: 19%; right: 8%;
-      width: 152px; height: 152px;
+      position: absolute; top: 18%; left: 8%;
+      width: 300px; height: 300px;
       transform: rotate(-8deg) scale(0);
       cursor: pointer; text-decoration: none;
       display: flex; align-items: center; justify-content: center;
       z-index: 10;
     }
     .sticker-ring {
-      position: absolute; inset: -11px; border-radius: 50%;
+      position: absolute; inset: -16px; border-radius: 50%;
       border: 1px dashed rgba(200,134,10,0.45);
       animation: ring-spin 22s linear infinite;
     }
@@ -56,10 +56,10 @@
       50%      { box-shadow: 0 16px 56px rgba(0,0,0,0.6), 0 6px 24px rgba(200,134,10,0.6); transform: scale(1.04); }
     }
 
-    .sticker-text { display: flex; flex-direction: column; align-items: center; gap: 4px; z-index: 1; }
-    .sticker-top  { font-family: 'Crimson Pro', serif; font-size: 9px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: #251000; opacity: 0.78; }
-    .sticker-main { font-family: 'Cormorant Garamond', serif; font-size: 23px; font-weight: 600; color: #180e00; text-align: center; line-height: 1.1; }
-    .sticker-sub  { font-family: 'Crimson Pro', serif; font-size: 8px; letter-spacing: 0.22em; text-transform: uppercase; color: #251000; opacity: 0.6; }
+    .sticker-text { display: flex; flex-direction: column; align-items: center; gap: 6px; z-index: 1; }
+    .sticker-top  { font-family: 'Crimson Pro', serif; font-size: 13px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: #251000; opacity: 0.78; }
+    .sticker-main { font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 600; color: #180e00; text-align: center; line-height: 1.0; }
+    .sticker-sub  { font-family: 'Crimson Pro', serif; font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: #251000; opacity: 0.6; }
 
     .scroll-hint {
       position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
@@ -76,8 +76,8 @@
     }
 
     @media (max-width: 800px) {
-      .sticker { width: 122px; height: 122px; right: 5%; bottom: 14%; }
-      .sticker-main { font-size: 19px; }
+      .sticker { width: 180px; height: 180px; left: 5%; top: 16%; }
+      .sticker-main { font-size: 28px; }
     }
   </style>
 </head>

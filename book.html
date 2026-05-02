@@ -84,6 +84,12 @@
 </head>
 <body>
 
+  <a href="index.html" class="close-btn" id="close-btn" aria-label="Back to home">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+      <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+    </svg>
+  </a>
+
   <nav id="main-nav" class="interior">
     <ul class="nav-links">
       <li><a href="book.html" class="active">The Book</a></li>
@@ -188,6 +194,7 @@
   <script>
     gsap.registerPlugin(ScrollTrigger);
     gsap.to('#main-nav', { opacity: 1, duration: 1.2, delay: 0.2, ease: 'power2.out' });
+    gsap.to('#close-btn', { opacity: 0.6, duration: 1.0, delay: 0.6, ease: 'power2.out' });
     gsap.to('#plabel',   { opacity: 1, y: 0, duration: 0.8, delay: 0.5, ease: 'power3.out' });
     gsap.to('#ptitle',   { opacity: 1, y: 0, duration: 1.0, delay: 0.7, ease: 'power3.out' });
     gsap.set(['#plabel','#ptitle'], { y: 20 });
