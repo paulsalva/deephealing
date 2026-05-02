@@ -27,7 +27,7 @@
       pointer-events: none;
     }
 
-    /* STICKER — desktop */
+    /* ── STICKER ── */
     .sticker {
       position: absolute;
       top: 18%; left: 8%;
@@ -37,19 +37,25 @@
       display: flex; align-items: center; justify-content: center;
       z-index: 10;
     }
-    .sticker-ring {
-      position: absolute; inset: -16px; border-radius: 50%;
-      border: 1px dashed rgba(200,134,10,0.45);
-      animation: ring-spin 22s linear infinite;
+
+    /* Star-ridge ring — SVG, spins slowly */
+    .sticker-star {
+      position: absolute;
+      inset: -18px;
+      width: calc(100% + 36px);
+      height: calc(100% + 36px);
+      animation: ring-spin 28s linear infinite;
+      overflow: visible;
     }
     @keyframes ring-spin { to { transform: rotate(360deg); } }
+
     .sticker-inner {
       width: 100%; height: 100%; border-radius: 50%;
       background: conic-gradient(from 0deg, #b07008, #f5d98a, #e8b84b, #c8860a, #7a4e04, #c8860a, #f0cc70, #b07008);
       display: flex; align-items: center; justify-content: center; flex-direction: column;
       box-shadow: 0 12px 48px rgba(0,0,0,0.7), 0 3px 12px rgba(200,134,10,0.4), inset 0 1px 3px rgba(255,255,255,0.28);
       animation: breathe 3.8s ease-in-out infinite;
-      position: relative;
+      position: relative; z-index: 1;
     }
     .sticker-inner::before {
       content: ''; position: absolute; inset: 8px;
@@ -64,7 +70,7 @@
     .sticker-main { font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 600; color: #180e00; text-align: center; line-height: 1.0; }
     .sticker-sub  { font-family: 'Crimson Pro', serif; font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: #251000; opacity: 0.6; }
 
-    /* ROTATING QUOTES */
+    /* ── ROTATING QUOTES ── */
     .quote-rotator {
       position: absolute;
       bottom: 52px; left: 52px;
@@ -87,21 +93,26 @@
       text-shadow: 0 1px 8px rgba(0,0,0,0.7);
     }
 
-    /* MOBILE overrides */
+    /* ── MOBILE ── */
     @media (max-width: 800px) {
-      /* Sticker: smaller, bottom-right */
+      /* Sticker: smaller, center-right, higher up */
       .sticker {
         top: auto; left: auto;
-        bottom: 5%; right: 5%;
+        bottom: 10%; right: 4%;
         width: 130px; height: 130px;
       }
-      .sticker-ring { inset: -8px; }
+      .sticker-star { inset: -8px; width: calc(100% + 16px); height: calc(100% + 16px); }
       .sticker-text { gap: 3px; }
       .sticker-top  { font-size: 7px; }
       .sticker-main { font-size: 20px; line-height: 1.05; }
       .sticker-sub  { font-size: 6px; }
-      /* Quotes: keep left, avoid sticker */
-      .quote-rotator { bottom: 28px; left: 20px; right: 165px; }
+
+      /* Quotes: bottom-left, clear of sticker */
+      .quote-rotator {
+        bottom: 24px; left: 18px;
+        right: 152px; /* clear of sticker */
+        max-width: none;
+      }
       .quote-text { font-size: 14px; }
     }
   </style>
@@ -138,8 +149,32 @@
   </nav>
 
   <section id="hero">
+
     <a href="book.html" class="sticker" id="sticker">
-      <div class="sticker-ring"></div>
+      <!-- Star-ridge ring SVG — 28 spikes, spins slowly -->
+      <svg class="sticker-star" viewBox="0 0 332 332" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="starGrad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%"   stop-color="#f5d98a"/>
+            <stop offset="60%"  stop-color="#c8860a"/>
+            <stop offset="100%" stop-color="#7a4e04"/>
+          </radialGradient>
+        </defs>
+        <path fill="url(#starGrad)"
+          d="M 166.0,22.0 L 184.14,5.02 L 198.04,25.61 L 219.51,13.09 L 228.48,36.26
+             L 252.19,28.83 L 255.78,53.42 L 280.55,51.45 L 278.58,76.22 L 303.17,79.81
+             L 295.74,103.52 L 318.91,112.49 L 306.39,133.96 L 326.98,147.86 L 310.0,166.0
+             L 326.98,184.14 L 306.39,198.04 L 318.91,219.51 L 295.74,228.48 L 303.17,252.19
+             L 278.58,255.78 L 280.55,280.55 L 255.78,278.58 L 252.19,303.17 L 228.48,295.74
+             L 219.51,318.91 L 198.04,306.39 L 184.14,326.98 L 166.0,310.0 L 147.86,326.98
+             L 133.96,306.39 L 112.49,318.91 L 103.52,295.74 L 79.81,303.17 L 76.22,278.58
+             L 51.45,280.55 L 53.42,255.78 L 28.83,252.19 L 36.26,228.48 L 13.09,219.51
+             L 25.61,198.04 L 5.02,184.14 L 22.0,166.0 L 5.02,147.86 L 25.61,133.96
+             L 13.09,112.49 L 36.26,103.52 L 28.83,79.81 L 53.42,76.22 L 51.45,51.45
+             L 76.22,53.42 L 79.81,28.83 L 103.52,36.26 L 112.49,13.09 L 133.96,25.61
+             L 147.86,5.02 Z"/>
+      </svg>
+
       <div class="sticker-inner">
         <div class="sticker-text">
           <span class="sticker-top">Now Available</span>
@@ -153,6 +188,7 @@
       <p class="quote-text" id="q-text">All words are magik words. Isn't that terrifying?</p>
       <p class="quote-attr" id="q-attr">— Deep Healing</p>
     </div>
+
   </section>
 
   <script>
@@ -179,9 +215,9 @@
       "What you are doing is right. What you are doing is interesting.",
     ];
 
-    const qText    = document.getElementById('q-text');
-    const qAttr    = document.getElementById('q-attr');
-    const rotator  = document.getElementById('quote-rotator');
+    const qText   = document.getElementById('q-text');
+    const qAttr   = document.getElementById('q-attr');
+    const rotator = document.getElementById('quote-rotator');
     let qIndex = 0;
 
     gsap.to(rotator, { opacity: 1, duration: 1.2, delay: 2.8, ease: 'power2.out' });
