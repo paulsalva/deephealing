@@ -77,6 +77,43 @@
       letter-spacing: 0.36em; text-transform: uppercase;
       opacity: 0; margin-bottom: 28px;
     }
+
+    /* Real event card */
+    .event-card {
+      border: 1px solid rgba(200,134,10,0.25);
+      padding: 28px 32px;
+      margin-bottom: 12px;
+      opacity: 0;
+    }
+    .event-date {
+      font-size: 11px; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .event-time {
+      font-size: 13px; color: var(--cream-dim);
+      letter-spacing: 0.1em; margin-bottom: 16px;
+    }
+    .event-venue {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px; font-weight: 300; font-style: italic;
+      color: var(--cream); line-height: 1.1; margin-bottom: 4px;
+    }
+    .event-location {
+      font-size: 14px; color: var(--cream-dim); opacity: 0.7;
+      margin-bottom: 24px;
+    }
+    .event-ticket-btn {
+      display: inline-block;
+      padding: 11px 28px;
+      border: 1px solid var(--gold);
+      color: var(--gold-light);
+      font-family: 'Crimson Pro', serif;
+      font-size: 12px; letter-spacing: 0.18em;
+      text-transform: uppercase; text-decoration: none;
+      transition: background 0.3s, color 0.3s;
+    }
+    .event-ticket-btn:hover { background: var(--gold); color: var(--forest-deep); }
     .notify-form { display: flex; opacity: 0; }
     .notify-form input {
       padding: 13px 20px; width: 220px;
@@ -121,27 +158,20 @@
     </button>
     <ul class="mobile-nav-links">
       <li><a href="book.html">The Book</a></li>
-      <li><a href="podcast.html">Podcast</a></li>
+      <li><a href="https://open.spotify.com/show/0vsEORfFKs7zBNAd3b7zyO" target="_blank">Podcast</a></li>
       <li><a href="events.html" class="active">Live Events</a></li>
       <li><a href="about.html">About</a></li>
-      <li><a href="https://YOUR-SHOPIFY-URL.myshopify.com" target="_blank">Shop</a></li>
+      <li><a href="https://newmanmedia.org/deephealingbook" target="_blank">Shop</a></li>
     </ul>
   </div>
 
   <nav id="main-nav" class="interior">
     <ul class="nav-links">
       <li><a href="book.html">The Book</a></li>
-      <li><a href="podcast.html">Podcast</a></li>
+      <li><a href="https://open.spotify.com/show/0vsEORfFKs7zBNAd3b7zyO" target="_blank">Podcast</a></li>
       <li><a href="events.html" class="active">Live Events</a></li>
       <li><a href="about.html">About</a></li>
-      <li><a href="https://YOUR-SHOPIFY-URL.myshopify.com" target="_blank">Shop</a></li>
-      <li>
-        <button class="nav-search" aria-label="Search">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-          </svg>
-        </button>
-      </li>
+      <li><a href="https://newmanmedia.org/deephealingbook" target="_blank">Shop</a></li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="Open menu">
       <span></span><span></span><span></span>
@@ -159,8 +189,17 @@
         <span class="events-label"  id="el">Live Events</span>
         <h1  class="events-title"   id="et">Catch<br>Greg Live</h1>
         <div class="events-divider" id="ed"></div>
-        <p   class="events-body"    id="eb">Tour dates and live event details are on their way. Sign up below to be the first to know.</p>
-        <div class="coming-soon-badge" id="cs">Coming Soon</div>
+
+        <!-- Event listing -->
+        <div class="event-card" id="ec">
+          <div class="event-date">Thu, June 18, 2026</div>
+          <div class="event-time">7:30 – 8:45 PM</div>
+          <div class="event-venue">Elysian Theater</div>
+          <div class="event-location">Los Angeles, CA</div>
+          <a href="https://www.elysiantheater.com/shows/gregbarris0618" target="_blank" class="event-ticket-btn">Get Tickets</a>
+        </div>
+
+        <p class="events-body" id="eb" style="margin-top:40px">More dates coming soon. Sign up to be the first to know.</p>
         <div class="notify-form" id="nf">
           <input type="email" placeholder="your@email.com" />
           <button type="button">Notify Me</button>
@@ -185,8 +224,8 @@
       .to('#el', { opacity: 1, y: 0, duration: 0.7,  ease: 'power3.out' }, '-=0.5')
       .to('#et', { opacity: 1, y: 0, duration: 0.9,  ease: 'power3.out' }, '-=0.4')
       .to('#ed', { opacity: 1,       duration: 0.6,  ease: 'power2.out' }, '-=0.3')
-      .to('#eb', { opacity: 1, y: 0, duration: 0.8,  ease: 'power3.out' }, '-=0.3')
-      .to('#cs', { opacity: 1,       duration: 0.6,  ease: 'power2.out' }, '-=0.2')
+      .to('#ec', { opacity: 1,       duration: 0.7,  ease: 'power2.out' }, '-=0.2')
+      .to('#eb', { opacity: 1, y: 0, duration: 0.8,  ease: 'power3.out' }, '-=0.2')
       .to('#nf', { opacity: 1,       duration: 0.6,  ease: 'power2.out' }, '-=0.1');
   </script>
 </body>
