@@ -19,7 +19,7 @@
       position: relative;
     }
     @media (max-width: 800px) {
-      #hero { background-image: url('images/deep-healing-bg-mobile.webp'); }
+      #hero { background-image: url('images/Deep-Healing-BG-mobile.webp'); }
     }
     #hero::after {
       content: ''; position: absolute; inset: 0;
@@ -95,10 +95,10 @@
 
     /* ── MOBILE ── */
     @media (max-width: 800px) {
-      /* Sticker: smaller, center-right, higher up */
+      /* Sticker: smaller, right side, upper third */
       .sticker {
-        top: auto; left: auto;
-        bottom: 10%; right: 4%;
+        top: 28%; left: auto;
+        bottom: auto; right: 5%;
         width: 130px; height: 130px;
       }
       .sticker-star { inset: -8px; width: calc(100% + 16px); height: calc(100% + 16px); }
@@ -107,13 +107,13 @@
       .sticker-main { font-size: 20px; line-height: 1.05; }
       .sticker-sub  { font-size: 6px; }
 
-      /* Quotes: bottom-left, clear of sticker */
+      /* Quotes: lower third, left side, clear of sticker */
       .quote-rotator {
-        bottom: 24px; left: 18px;
-        right: 152px; /* clear of sticker */
+        bottom: 18%; left: 18px;
+        right: 18px;
         max-width: none;
       }
-      .quote-text { font-size: 14px; }
+      .quote-text { font-size: 15px; }
     }
   </style>
 </head>
