@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live Events — Deep Healing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <style>
+    /* Events uses full-bleed centered layout — no scroll */
+    body { height: 100vh; overflow: hidden; display: flex; flex-direction: column; }
+
+    .events-hero {
+      flex: 1;
+      background-image: url('images/Deep-Healing-BG.webp');
+      background-size: cover;
+      background-position: center top;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      text-align: center;
+    }
+    .events-hero::after {
+      content: ''; position: absolute; inset: 0;
+      background: rgba(6, 14, 8, 0.62);
+    }
+
+    .events-content {
+      position: relative; z-index: 1;
+      display: flex; flex-direction: column;
+      align-items: center;
+    }
+
+    .events-label {
+      font-size: 10px; letter-spacing: 0.36em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 22px; opacity: 0;
+    }
+    .events-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(64px, 10vw, 130px);
+      font-weight: 300; font-style: italic;
+      line-height: 0.92; color: var(--cream);
+      opacity: 0; margin-bottom: 36px;
+    }
+    .events-divider {
+      width: 56px; height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      margin-bottom: 28px; opacity: 0;
+    }
+    .events-body {
+      font-size: 18px; font-weight: 300; line-height: 1.7;
+      color: var(--cream-dim); max-width: 460px;
+      opacity: 0; margin-bottom: 32px;
+    }
+    .coming-soon-badge {
+      display: inline-block; padding: 12px 36px;
+      border: 1px solid rgba(200,134,10,0.4);
+      color: var(--gold); font-size: 10px;
+      letter-spacing: 0.36em; text-transform: uppercase;
+      opacity: 0; margin-bottom: 28px;
+    }
+    .notify-form { display: flex; opacity: 0; }
+    .notify-form input {
+      padding: 13px 20px; width: 250px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(200,134,10,0.25); border-right: none;
+      color: var(--cream); font-family: 'Crimson Pro', serif;
+      font-size: 15px; outline: none;
+    }
+    .notify-form input::placeholder { color: var(--cream-dim); opacity: 0.4; }
+    .notify-form button {
+      padding: 13px 22px; background: var(--gold);
+      border: 1px solid var(--gold); color: var(--forest-deep);
+      font-family: 'Crimson Pro', serif; font-size: 11px;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      cursor: pointer; transition: background 0.3s; white-space: nowrap;
+    }
+    .notify-form button:hover { background: var(--gold-light); }
+
+    @media (max-width: 800px) {
+      .notify-form input { width: 180px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="main-nav" class="interior">
+    <ul class="nav-links">
+      <li><a href="book.html">The Book</a></li>
+      <li><a href="podcast.html">Podcast</a></li>
+      <li><a href="events.html" class="active">Live Events</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="https://YOUR-SHOPIFY-URL.myshopify.com" target="_blank">Shop</a></li>
+      <li>
+        <button class="nav-search" aria-label="Search">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+        </button>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="events-hero">
+    <div class="events-content">
+      <span class="events-label"  id="el">Live Events</span>
+      <h1  class="events-title"   id="et">Catch<br>Greg Live</h1>
+      <div class="events-divider" id="ed"></div>
+      <p   class="events-body"    id="eb">Tour dates and live event details are on their way. Sign up below to be the first to know.</p>
+      <div class="coming-soon-badge" id="cs">Coming Soon</div>
+      <div class="notify-form" id="nf">
+        <input type="email" placeholder="your@email.com" />
+        <button type="button">Notify Me</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    gsap.to('#main-nav', { opacity: 1, duration: 1.2, delay: 0.2, ease: 'power2.out' });
+    gsap.set(['#el','#et','#eb'], { y: 20 });
+    const tl = gsap.timeline({ delay: 0.5 });
+    tl.to('#el', { opacity: 1, y: 0, duration: 0.7,  ease: 'power3.out' })
+      .to('#et', { opacity: 1, y: 0, duration: 0.9,  ease: 'power3.out' }, '-=0.4')
+      .to('#ed', { opacity: 1,       duration: 0.6,  ease: 'power2.out' }, '-=0.3')
+      .to('#eb', { opacity: 1, y: 0, duration: 0.8,  ease: 'power3.out' }, '-=0.3')
+      .to('#cs', { opacity: 1,       duration: 0.6,  ease: 'power2.out' }, '-=0.2')
+      .to('#nf', { opacity: 1,       duration: 0.6,  ease: 'power2.out' }, '-=0.1');
+  </script>
+</body>
+</html>

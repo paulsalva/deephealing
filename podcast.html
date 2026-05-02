@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Podcast — Deep Healing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <style>
+    .podcast-content { padding: 80px 0 100px; }
+
+    .podcast-intro {
+      max-width: 720px;
+      margin-bottom: 64px;
+    }
+
+    .spreaker-wrap {
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(200,134,10,0.14);
+      border-radius: 6px;
+      height: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(200,134,10,0.3);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 14px;
+      letter-spacing: 0.1em;
+      /* Replace this entire div with your Spreaker iframe */
+    }
+
+    .listen-on { margin-top: 40px; }
+    .listen-label {
+      font-size: 10px; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--gold);
+      display: block; margin-bottom: 16px;
+    }
+    .platform-links { display: flex; gap: 24px; flex-wrap: wrap; }
+    .platform-links a {
+      font-size: 15px; color: var(--cream-dim); text-decoration: none;
+      border-bottom: 1px solid rgba(200,134,10,0.28); padding-bottom: 2px;
+      transition: color 0.3s, border-color 0.3s;
+    }
+    .platform-links a:hover { color: var(--gold-light); border-color: var(--gold-light); }
+  </style>
+</head>
+<body>
+
+  <nav id="main-nav" class="interior">
+    <ul class="nav-links">
+      <li><a href="book.html">The Book</a></li>
+      <li><a href="podcast.html" class="active">Podcast</a></li>
+      <li><a href="events.html">Live Events</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="https://YOUR-SHOPIFY-URL.myshopify.com" target="_blank">Shop</a></li>
+      <li>
+        <button class="nav-search" aria-label="Search">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+        </button>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="page-header">
+    <div class="page-header-text">
+      <span class="page-label" id="plabel">The Podcast</span>
+      <h1 class="page-title" id="ptitle">Deep<br>Healing</h1>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="podcast-content">
+
+      <div class="podcast-intro">
+        <div class="divider will-animate"></div>
+        <p class="section-body will-animate">
+          [Podcast description — replace with real copy. Weekly conversations about healing, consciousness, and transformation with Greg Barris and Michelle.]
+        </p>
+      </div>
+
+      <span class="section-label will-animate">Latest Episodes</span>
+
+      <!-- ↓↓ Replace this div with your actual Spreaker embed iframe ↓↓ -->
+      <div class="spreaker-wrap will-animate">
+        Spreaker Player Embed
+      </div>
+
+      <div class="listen-on will-animate">
+        <span class="listen-label">Also Available On</span>
+        <div class="platform-links">
+          <a href="#">Spotify</a>
+          <a href="#">Apple Podcasts</a>
+          <a href="#">YouTube</a>
+          <a href="#">Spreaker</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <span class="footer-label">Stay Connected</span>
+          <div class="newsletter-form">
+            <input type="email" placeholder="your@email.com" />
+            <button type="button">Join</button>
+          </div>
+        </div>
+        <div>
+          <span class="footer-label">Follow</span>
+          <div class="social-links">
+            <a href="#">Instagram</a>
+            <a href="#">YouTube</a>
+            <a href="#">TikTok</a>
+            <a href="#">Spotify</a>
+          </div>
+        </div>
+        <div>
+          <span class="footer-label">A Newman Media Project</span>
+          <a href="https://NEWMAN-MEDIA-URL.com" target="_blank" class="newman-link">newmanmedia.com</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Deep Healing. All rights reserved.</p>
+        <a href="https://NEWMAN-MEDIA-URL.com" target="_blank" class="newman-link">Newman Media</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.to('#main-nav', { opacity: 1, duration: 1.2, delay: 0.2, ease: 'power2.out' });
+    gsap.set(['#plabel','#ptitle'], { y: 20 });
+    gsap.to('#plabel', { opacity: 1, y: 0, duration: 0.8, delay: 0.5, ease: 'power3.out' });
+    gsap.to('#ptitle', { opacity: 1, y: 0, duration: 1.0, delay: 0.7, ease: 'power3.out' });
+    gsap.utils.toArray('.will-animate').forEach(el => {
+      gsap.set(el, { y: 24 });
+      gsap.to(el, { opacity: 1, y: 0, duration: 0.85, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 88%' } });
+    });
+  </script>
+</body>
+</html>
